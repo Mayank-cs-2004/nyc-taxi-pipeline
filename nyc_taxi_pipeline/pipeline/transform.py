@@ -1,31 +1,42 @@
-import pandas as pd
+from pyspark.sql.functions import (
+    col, to_timestamp, hour, dayofweek, dayname, 
+    round as spark_round, datediff, when
+)
 
-def transform(df: pd.DataFrame) -> pd.DataFrame:
-    print("[transform] Cleaning data...")
-    original_count = len(df)
-
-    # fix types
-    df["tpep_pickup_datetime"] = pd.to_datetime(df["tpep_pickup_datetime"])
-    df["tpep_dropoff_datetime"] = pd.to_datetime(df["tpep_dropoff_datetime"])
-
-    # drop bad rows
-    df = df[df["trip_distance"] > 0]
-    df = df[df["fare_amount"] > 0]
-    df = df[df["passenger_count"] > 0]
-    df = df.dropna(subset=["PULocationID", "DOLocationID"])
-
-    # add useful columns
-    df["trip_duration_minutes"] = (
-        (df["tpep_dropoff_datetime"] - df["tpep_pickup_datetime"])
-        .dt.total_seconds() / 60
+def transform(df):
+    """Clean and enrich data using Spark"""
+    print("[transform] Cleaning data with Spark...")
+    original_count = df.count()
+    
+    # Fix types
+    df = df.withColumn("tpep_pickup_datetime", to_timestamp("tpep_pickup_datetime"))
+    df = df.withColumn("tpep_dropoff_datetime", to_timestamp("tpep_dropoff_datetime"))
+    
+    # Filter bad rows
+    df = df.filter(col("trip_distance") > 0)
+    df = df.filter(col("fare_amount") > 0)
+    df = df.filter(col("passenger_count") > 0)
+    df = df.filter(col("PULocationID").isNotNull())
+    df = df.filter(col("DOLocationID").isNotNull())
+    
+    # Add useful columns
+    df = df.withColumn(
+        "trip_duration_minutes",
+        spark_round(
+            (datediff(col("tpep_dropoff_datetime"), col("tpep_pickup_datetime")) * 24 * 60 +
+             (col("tpep_dropoff_datetime").cast("long") - col("tpep_pickup_datetime").cast("long")) / 60) 
+            / 60, 2
+        )
     )
-    df["pickup_hour"] = df["tpep_pickup_datetime"].dt.hour
-    df["pickup_day_of_week"] = df["tpep_pickup_datetime"].dt.day_name()
-    df["cost_per_mile"] = df["fare_amount"] / df["trip_distance"]
-
-    # drop absurd trip durations (under 1 min or over 5 hours)
-    df = df[(df["trip_duration_minutes"] >= 1) & (df["trip_duration_minutes"] <= 300)]
-
-    removed = original_count - len(df)
-    print(f"[transform] Removed {removed:,} bad rows. {len(df):,} rows remaining.")
+    df = df.withColumn("pickup_hour", hour(col("tpep_pickup_datetime")))
+    df = df.withColumn("pickup_day_of_week", dayname(col("tpep_pickup_datetime")))
+    df = df.withColumn("cost_per_mile", spark_round(col("fare_amount") / col("trip_distance"), 2))
+    
+    # Filter absurd durations
+    df = df.filter((col("trip_duration_minutes") >= 1) & (col("trip_duration_minutes") <= 300))
+    
+    final_count = df.count()
+    removed = original_count - final_count
+    print(f"[transform] Removed {removed:,} bad rows. {final_count:,} rows remaining.")
+    
     return df
