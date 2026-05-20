@@ -1,0 +1,19 @@
+version: 2
+
+sources:
+  - name: raw
+    database: nyc_taxi
+    schema: raw
+    tables:
+      - name: taxi_trips_raw
+        description: "Raw taxi trip data from NYC"
+        columns:
+          - name: vendor_id
+            description: "Taxi vendor ID"
+
+models:
+  - name: stg_taxi_trips
+    description: "Cleaned staging table"
+    
+  - name: fct_taxi_trips
+    description: "Business facts with metrics"

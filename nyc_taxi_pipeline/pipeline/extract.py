@@ -4,6 +4,7 @@ def extract(filepath: str):
     """Load parquet file as Spark DataFrame"""
     spark = SparkSession.builder \
         .appName("nyc_taxi_pipeline") \
+        .config("spark.jars.packages", "org.postgresql:postgresql:42.7.1") \
         .getOrCreate()
     
     print(f"[extract] Loading {filepath} with Spark...")

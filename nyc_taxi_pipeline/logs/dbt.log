@@ -1,0 +1,89 @@
+[0m13:09:52.576317 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0e90b93620>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0e92b94a50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0e8fb23c50>]}
+
+
+============================== 13:09:52.580758 | 3bfdb123-a2b4-4c6b-a177-65ed35815152 ==============================
+[0m13:09:52.580758 [info ] [MainThread]: Running with dbt=1.12.0-b1
+[0m13:09:52.581196 [debug] [MainThread]: running dbt with arguments {'indirect_selection': 'eager', 'printer_width': '80', 'introspect': 'True', 'log_cache_events': 'False', 'fail_fast': 'False', 'send_anonymous_usage_stats': 'True', 'static_parser': 'True', 'version_check': 'True', 'use_colors': 'True', 'profiles_dir': '/home/kuro/.dbt', 'cache_selected_only': 'False', 'log_path': 'logs', 'debug': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'invocation_command': 'dbt init taxi_dbt', 'partial_parse': 'True', 'write_json': 'True', 'use_experimental_parser': 'False', 'target_path': 'None', 'warn_error': 'None', 'log_format': 'default', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])'}
+[0m13:09:52.589147 [info ] [MainThread]: Creating dbt configuration folder at /home/kuro/.dbt
+[0m13:09:52.592082 [debug] [MainThread]: Starter project path: /home/kuro/projects/venv/lib/python3.14/site-packages/dbt/include/starter_project
+[0m13:09:52.596755 [info ] [MainThread]: Setting up your profile.
+[0m13:11:23.523777 [info ] [MainThread]: Profile taxi_dbt written to /home/kuro/.dbt/profiles.yml using target's profile_template.yml and your supplied values.
+[0m13:11:23.527032 [info ] [MainThread]: Running dbt debug to validate the project...
+[0m13:11:23.528597 [info ] [MainThread]: dbt version: 1.12.0-b1
+[0m13:11:23.529360 [info ] [MainThread]: python version: 3.14.5
+[0m13:11:23.529997 [info ] [MainThread]: python path: /home/kuro/projects/venv/bin/python
+[0m13:11:23.531354 [info ] [MainThread]: os info: Linux-7.0.8-arch1-1-x86_64-with-glibc2.43
+[0m13:11:23.560666 [info ] [MainThread]: Using profiles dir at /home/kuro/.dbt
+[0m13:11:23.561056 [info ] [MainThread]: Using profiles.yml file at /home/kuro/.dbt/profiles.yml
+[0m13:11:23.561373 [info ] [MainThread]: Using dbt_project.yml file at /home/kuro/projects/nyc_taxi_pipeline/taxi_dbt/dbt_project.yml
+[0m13:11:23.561865 [info ] [MainThread]: adapter type: postgres
+[0m13:11:23.562297 [info ] [MainThread]: adapter version: 1.10.0
+[0m13:11:23.661578 [info ] [MainThread]: Configuration:
+[0m13:11:23.661954 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m13:11:23.662182 [info ] [MainThread]:   dbt_project.yml file [[32mOK found and valid[0m]
+[0m13:11:23.662402 [info ] [MainThread]: Required dependencies:
+[0m13:11:23.662651 [debug] [MainThread]: Executing "git --help"
+[0m13:11:23.665548 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]\n           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]\n           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone      Clone a repository into a new directory\n   init       Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add        Add file contents to the index\n   mv         Move or rename a file, a directory, or a symlink\n   restore    Restore working tree files\n   rm         Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect     Use binary search to find the commit that introduced a bug\n   diff       Show changes between commits, commit and working tree, etc\n   grep       Print lines matching a pattern\n   log        Show commit logs\n   show       Show various types of objects\n   status     Show the working tree status\n\ngrow, mark and tweak your common history\n   backfill   Download missing objects in a partial clone\n   branch     List, create, or delete branches\n   commit     Record changes to the repository\n   history    EXPERIMENTAL: Rewrite history\n   merge      Join two or more development histories together\n   rebase     Reapply commits on top of another base tip\n   reset      Set `HEAD` or the index to a known state\n   switch     Switch branches\n   tag        Create, list, delete or verify tags\n\ncollaborate (see also: git help workflows)\n   fetch      Download objects and refs from another repository\n   pull       Fetch from and integrate with another repository or a local branch\n   push       Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m13:11:23.666032 [debug] [MainThread]: STDERR: "b''"
+[0m13:11:23.666258 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m13:11:23.666499 [info ] [MainThread]: Connection:
+[0m13:11:23.666743 [info ] [MainThread]:   host: localhost
+[0m13:11:23.666962 [info ] [MainThread]:   port: 5432
+[0m13:11:23.667162 [info ] [MainThread]:   user: postgres
+[0m13:11:23.667359 [info ] [MainThread]:   database: postgres
+[0m13:11:23.667577 [info ] [MainThread]:   schema: analytics
+[0m13:11:23.667769 [info ] [MainThread]:   connect_timeout: 10
+[0m13:11:23.667964 [info ] [MainThread]:   role: None
+[0m13:11:23.668155 [info ] [MainThread]:   search_path: None
+[0m13:11:23.668344 [info ] [MainThread]:   keepalives_idle: 0
+[0m13:11:23.668585 [info ] [MainThread]:   sslmode: None
+[0m13:11:23.668779 [info ] [MainThread]:   sslcert: None
+[0m13:11:23.668973 [info ] [MainThread]:   sslkey: None
+[0m13:11:23.669166 [info ] [MainThread]:   sslrootcert: None
+[0m13:11:23.669359 [info ] [MainThread]:   application_name: dbt
+[0m13:11:23.669557 [info ] [MainThread]:   retries: 1
+[0m13:11:23.670040 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m13:11:23.719177 [debug] [MainThread]: Acquiring new postgres connection 'debug'
+[0m13:11:23.742128 [debug] [MainThread]: Using postgres connection "debug"
+[0m13:11:23.742494 [debug] [MainThread]: On debug: select 1 as id
+[0m13:11:23.742702 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m13:11:23.754640 [debug] [MainThread]: SQL status: SELECT 1 in 0.012 seconds
+[0m13:11:23.755487 [debug] [MainThread]: On debug: Close
+[0m13:11:23.755787 [info ] [MainThread]:   Connection test: [[32mOK connection ok[0m]
+
+[0m13:11:23.756028 [info ] [MainThread]: [32mAll checks passed![0m
+[0m13:11:23.756304 [info ] [MainThread]: Your new dbt project "taxi_dbt" was created!
+Initialized new project in /home/kuro/projects/nyc_taxi_pipeline/taxi_dbt/taxi_dbt
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m13:11:23.757686 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 91.23565, "process_in_blocks": "5288", "process_kernel_time": 0.143022, "process_mem_max_rss": "129012", "process_out_blocks": "232", "process_user_time": 1.251707}
+[0m13:11:23.758684 [debug] [MainThread]: Command `dbt init` succeeded at 13:11:23.758542 after 91.24 seconds
+[0m13:11:23.759280 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m13:11:23.759769 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0e8fb876f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0e90a51130>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0e9015b790>]}
+[0m13:11:23.760351 [debug] [MainThread]: Flushing usage events
+[0m13:11:25.548453 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m15:37:10.450756 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb0d0d6f620>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb0d2ccca50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb0cfcffc50>]}
+
+
+============================== 15:37:10.461147 | eca59851-8877-4c5f-8b81-72704362ad51 ==============================
+[0m15:37:10.461147 [info ] [MainThread]: Running with dbt=1.12.0-b1
+[0m15:37:10.462314 [debug] [MainThread]: running dbt with arguments {'log_cache_events': 'False', 'use_experimental_parser': 'False', 'use_colors': 'True', 'log_format': 'default', 'cache_selected_only': 'False', 'quiet': 'False', 'printer_width': '80', 'partial_parse': 'True', 'warn_error': 'None', 'profiles_dir': '/home/kuro/.dbt', 'debug': 'False', 'write_json': 'True', 'introspect': 'True', 'no_print': 'None', 'empty': 'None', 'invocation_command': 'dbt init taxi_dbt', 'log_path': 'logs', 'version_check': 'True', 'indirect_selection': 'eager', 'static_parser': 'True', 'fail_fast': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'send_anonymous_usage_stats': 'True', 'target_path': 'None'}
+[0m15:37:10.472265 [info ] [MainThread]: A project called taxi_dbt already exists here.
+[0m15:37:10.473151 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 0.07877905, "process_in_blocks": "32", "process_kernel_time": 0.088186, "process_mem_max_rss": "114472", "process_out_blocks": "8", "process_user_time": 1.068263}
+[0m15:37:10.473659 [debug] [MainThread]: Command `dbt init` succeeded at 15:37:10.473555 after 0.08 seconds
+[0m15:37:10.474156 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb0cfd636f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb0cfd43410>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7fb0cfb568b0>]}
+[0m15:37:10.474874 [debug] [MainThread]: Flushing usage events
+[0m15:37:12.314076 [debug] [MainThread]: An error was encountered while trying to flush usage events
